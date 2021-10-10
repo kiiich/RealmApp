@@ -29,18 +29,7 @@ class TaskListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskLists.count
     }
-    
-    @IBAction func sortDidChange(_ sender: UISegmentedControl) {
         
-        if sender.selectedSegmentIndex == 0 {
-            taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
-        } else {
-            taskLists = taskLists.sorted(byKeyPath: "name", ascending: true)
-        }
-        
-        tableView.reloadData()
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
         let taskList = taskLists[indexPath.row]
@@ -92,9 +81,17 @@ class TaskListViewController: UITableViewController {
         showAlert()
     }
     
-    @IBAction func sortingList(_ sender: UISegmentedControl) {
-    }
+    @IBAction func sortDidChange(_ sender: UISegmentedControl) {
         
+        if sender.selectedSegmentIndex == 0 {
+            taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
+        } else {
+            taskLists = taskLists.sorted(byKeyPath: "name", ascending: true)
+        }
+        
+        tableView.reloadData()
+    }
+            
     private func createTempData() {
         DataManager.shared.createTempData {
             self.tableView.reloadData()

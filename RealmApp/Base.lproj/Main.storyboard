@@ -24,7 +24,6 @@
                             </segments>
                             <connections>
                                 <action selector="sortDidChange:" destination="qX0-tw-d0x" eventType="valueChanged" id="B3n-aV-BST"/>
-                                <action selector="sortingList:" destination="qX0-tw-d0x" eventType="valueChanged" id="1YQ-bZ-RKp"/>
                             </connections>
                         </segmentedControl>
                         <prototypes>
