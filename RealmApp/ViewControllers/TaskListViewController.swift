@@ -35,7 +35,9 @@ class TaskListViewController: UITableViewController {
         let taskList = taskLists[indexPath.row]
         var content = cell.defaultContentConfiguration()
         content.text = taskList.name
-        content.secondaryText = "\(taskList.tasks.count)"
+        let countOfUndone = taskList.tasks.filter { !$0.isComplete }.count
+        let secondaryText = countOfUndone == 0 ? "👍🏻" : String(countOfUndone)
+        content.secondaryText = "\(secondaryText)"
         cell.contentConfiguration = content
         return cell
     }
